@@ -1,0 +1,7 @@
+FROM python:3.10
+
+VOLUME ["/workspace" ]
+
+COPY requirements.txt ./
+RUN pip install --no-cache-dir -r requirements.txt
+RUN apt --assume-yes update && apt --assume-yes install nano && apt --assume-yes install curl

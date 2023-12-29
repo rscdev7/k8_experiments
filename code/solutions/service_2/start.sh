@@ -1,0 +1,1 @@
+uvicorn --host 0.0.0.0 --port $SERVER_PORT --workers 1 main:app

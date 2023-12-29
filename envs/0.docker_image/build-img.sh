@@ -1,0 +1,1 @@
+docker image build -f DockerFile -t k8:exp .

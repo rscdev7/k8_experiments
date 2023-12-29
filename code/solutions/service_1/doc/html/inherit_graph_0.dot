@@ -1,0 +1,11 @@
+digraph "Graphical Class Hierarchy"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node4 [label="BaseModel",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node4 -> Node0 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node0 [label="AddInfo",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classservice__1_1_1lib_1_1rest__api_1_1end__points_1_1_add_info.html"];
+  Node4 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 [label="Descr",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classservice__1_1_1lib_1_1rest__api_1_1end__points_1_1_descr.html"];
+}

@@ -1,0 +1,31 @@
+version: '3'
+services:
+    service_1:
+        image                   : 'k8:exp'
+        hostname                : 'service_1'
+        container_name          : 'service_1'
+        restart                 : always
+        command                 : "bash"
+        tty                     : true
+        stdin_open              : true
+        environment             :
+            SERVER_PORT: ${VAR_1}
+        ports:
+            - ${S1_PORT}:${S1_PORT}
+        volumes:
+            - ${S1_VOL_HOST}:${VOL_CNT}
+
+    service_2:
+        image                   : 'k8:exp'
+        hostname                : 'service_2'
+        container_name          : 'service_2'
+        restart                 : always
+        command                 : "bash"
+        tty                     : true
+        stdin_open              : true
+        environment             :
+            SERVER_PORT: ${VAR_2}
+        ports:
+            - ${S2_PORT}:${S2_PORT}
+        volumes:
+            - ${S2_VOL_HOST}:${VOL_CNT}
