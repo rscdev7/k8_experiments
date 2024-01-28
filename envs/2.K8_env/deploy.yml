@@ -1,0 +1,83 @@
+apiVersion              : apps/v1
+kind                    : Deployment
+metadata:
+  name                  : k8-sample-app
+  namespace             : k8samp
+  labels:
+    app                 : k8-sample-app
+
+spec:
+  replicas            : 2
+  selector:
+    matchLabels:
+      app             : k8-sample-app
+      
+  template:
+    metadata:
+      labels:
+        app           : k8-sample-app
+
+    spec:       
+      volumes:
+      - name: app-share
+        persistentVolumeClaim:
+          claimName: nfs-claim
+
+      containers:
+        - name        : service-1
+          image       : k8:exp
+          command     : [ "/bin/bash" ]
+          stdin       : true
+          tty         : true
+          env:
+            - name       : SERVER_PORT
+              valueFrom:
+                configMapKeyRef:
+                  name : k8map
+                  key  : S1_PORT
+            
+            - name       : VAR_1
+              valueFrom:
+                configMapKeyRef:
+                  name : k8map
+                  key  : VAR_1
+
+            - name       : VOL_CNT
+              valueFrom:
+                configMapKeyRef:
+                  name : k8map
+                  key  : VOL_CNT       
+          ports:
+            - containerPort: 9005
+          volumeMounts:
+          - name: app-share
+            mountPath: /workspace
+
+        - name        : service-2
+          image       : k8:exp
+          command     : [ "/bin/bash" ]
+          stdin       : true
+          tty         : true
+          env:
+            - name       : SERVER_PORT
+              valueFrom:
+                configMapKeyRef:
+                  name : k8map
+                  key  : S2_PORT
+            
+            - name       : VAR_2
+              valueFrom:
+                configMapKeyRef:
+                  name : k8map
+                  key  : VAR_2
+
+            - name       : VOL_CNT
+              valueFrom:
+                configMapKeyRef:
+                  name : k8map
+                  key  : VOL_CNT       
+          ports:
+            - containerPort: 9006
+          volumeMounts:
+          - name: app-share
+            mountPath: /workspace
