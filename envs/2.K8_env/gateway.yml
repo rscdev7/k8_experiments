@@ -14,7 +14,7 @@ spec:
       - path: /service_1
         backend:
           service:
-            name: k8-sample-app-svc
+            name: service-1
             port:
               number: 80
         pathType: ImplementationSpecific

@@ -21,7 +21,7 @@ class Descr(BaseModel):
 router:APIRouter                                    = APIRouter()
 
 # CFG
-K8_SERV:str             = "k8-sample-app-svc"
+K8_SERV:str             = "service-2"
 K8_PORT:str             = "85"
 COMPOSE_VER:str         = "service_2"
 COMPOSE_PORT:str        = "9006"
