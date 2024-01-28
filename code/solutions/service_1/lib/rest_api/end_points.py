@@ -21,7 +21,11 @@ class Descr(BaseModel):
 router:APIRouter                                    = APIRouter()
 
 # CFG
-S2_END_POINT:str        = "http://service_2:9006/service_2"
+K8_SERV:str             = "k8-sample-app-svc"
+K8_PORT:str             = "85"
+COMPOSE_VER:str         = "service_2"
+COMPOSE_PORT:str        = "9006"
+S2_END_POINT:str        = "http://{}:{}/service_2".format( K8_SERV , K8_PORT )
 
 @router.get(
     "/service_1"                                                                            , 
